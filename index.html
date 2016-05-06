@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Min.bz by DigitalCube.rs</title>
+
+    <link href="bootstrap.min.css" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.js"></script>
+    <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+    <script type="text/javascript" charset="utf-8" src="jquery.leanModal.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js.js"></script>
+    <link rel="icon" type="image/png" href="logo1.png" />
+
+    <script type="text/javascript" src="script1.js"></script>
+
+    <script>
+        $(document).ready(function(){
+            $(window).scroll(function(){
+                if ($(this).scrollTop() > 100) {
+                    $('#scroll').fadeIn();
+                } else {
+                    $('#scroll').fadeOut();
+                }
+            });
+            $('#scroll').click(function(){
+                $("html, body").animate({ scrollTop: 0 }, 600);
+                return false;
+            });
+        });
+    </script>
+
+
+
+</head>
+
+<body>
+
+<!--Header and cover-->
+<div class="intro-header">
+    <nav class="navbar navbar-default" style="margin-bottom: 0; background: rgba(255,255,255,0.3); border: none; padding:10px; ">
+        <div class="container">
+            <div class="navbar-header">
+
+                <img src="https://imagizer.imageshack.us/v2/741x294q90/924/yvVB2y.png" width="150">
+
+            </div>
+            <div class="navbar-right">
+                <a href="#" class="btn btn-lg" id="login-btn" role="button" data-toggle="modal" data-target="#login-modal" >
+                    Login</a>
+            </div>
+        </div>
+    </nav>
+    <section>
+
+    <div class="container">
+
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3  " style="background: rgba(255,255,255,0.5); border-radius: 3px; padding-left: 35px; padding-right: 35px;">
+                <div class="intro-message">
+                <h1>Easy share</h1>
+                <hr class="intro-divider">
+                <div class="enter_url" >
+                    <form id="url">
+                        <div class="input-group enter_url">
+                            <input type="text" id="enter_url" placeholder="Enter your URL" >
+                            <input type="submit" id="btn_sub" value="Submit">
+                        </div>
+                    </form>
+                </div>
+                <div class="row">
+                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                    <h4 style="font-size: 16px;"><span style="color: #2d2d2d;">Expiring days (optional)</span></h4>
+
+                </div>
+                <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
+                    <div class="radio"  style="color: #2d2d2d; ">
+                        <label class="radio-inline"><input type="radio" class="exp_days" value="1" name="optradio"> 1 day</label>
+                        <label class="radio-inline"><input type="radio" class="exp_days" value="7" name="optradio"> 7 days</label>
+                        <label class="radio-inline"><input type="radio" class="exp_days" value="30" name="optradio"> 30 days</label>
+                        <label class="radio-inline"><input type="radio" class="exp_days" value="" name="optradio"> Never</label>
+                    </div>
+
+                </div>
+
+                    </div><div class="row" style="padding-top: 5px">
+                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                    <h4 style="color: #2d2d2d;font-size: 16px;">Custom alias (optional)</h4>
+                </div>
+                <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8" style="padding-top: 10px">
+                        <div class="input-group" style="color: #2d2d2d; ">
+                            <span class="input-group-addon" id="basic-addon3"><em>https://min.bz</em></span>
+                            <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+                        </div>
+                </div>
+                </div>
+            </div></div>
+
+            <!--<div class="col-md-3 col-md-offset-0">-->
+                    <!--<div class="row" style="margin:0 2px; ">-->
+                        <!--<div class="preview" >-->
+                            <!--<table  style="width:100%; padding:15px">-->
+                                <!--<tr>-->
+                                    <!--<th>Short URL</th>-->
+                                    <!--<th>Expiring date</th>-->
+                                    <!--<th>Number of clicks</th>-->
+                                <!--</tr>-->
+                                <!--<tr>-->
+                                    <!--<td id="short_url"></td>-->
+                                    <!--<td id="expiring_data"></td>-->
+                                    <!--<td id="num_clicks"></td>-->
+                                <!--</tr>-->
+                            <!--</table>-->
+                        <!--</div>-->
+                    <!--</div>-->
+            <!--</div>-->
+
+        </div>
+    </div>
+    </section>
+</div>
+<!--end of header and cover-->
+
+<!-- BEGIN # MODAL LOGIN -->
+<div class="col-xs-12 col-sm-12">
+<div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header" align="center">
+                <img class="img-circle" id="img_logo" src="http://imageshack.com/a/img924/8751/yvVB2y.png" style="padding: 10px">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                </button>
+            </div>
+
+            <!-- Begin # DIV Form -->
+            <div id="div-forms">
+
+                <!-- Begin # Login Form -->
+                <form id="login-form">
+                    <div class="modal-body">
+
+                        <input id="login_username" class="form-control" type="text" placeholder="Username" required>
+                        <input id="login_password" class="form-control" type="password" placeholder="Password" required>
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox"> Remember me
+                            </label>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <div>
+                            <button type="submit" class="btn btn-primary btn-lg btn-block" id="login_button">Login</button>
+                        </div>
+                        <div>
+                            <button id="login_lost_btn" type="button" class="btn btn-link">Lost Password?</button>
+                            <button id="login_register_btn" type="button" class="btn btn-link">Register</button>
+                        </div>
+                    </div>
+                </form>
+                <!-- End # Login Form -->
+
+                <!-- Begin | Lost Password Form -->
+                <form id="lost-form" style="display:none;">
+                    <div class="modal-body">
+                        <div id="div-lost-msg">
+                            <div id="icon-lost-msg" class="glyphicon glyphicon-chevron-right"></div>
+                            <span id="text-lost-msg">Type your e-mail.</span>
+                        </div>
+                        <input id="lost_email" class="form-control" type="text" placeholder="E-Mail" required>
+                    </div>
+                    <div class="modal-footer">
+                        <div>
+                            <button type="submit" class="btn btn-primary btn-lg btn-block" id="lost_pass_btn">Send</button>
+                        </div>
+                        <div>
+                            <button id="lost_login_btn" type="button" class="btn btn-link">Log In</button>
+                            <button id="lost_register_btn" type="button" class="btn btn-link">Register</button>
+                        </div>
+                    </div>
+                </form>
+                <!-- End | Lost Password Form -->
+
+                <!-- Begin | Register Form -->
+                <form id="register-form" style="display:none;">
+                    <div class="modal-body">
+                        <div id="div-register-msg">
+                            <div id="icon-register-msg" class="glyphicon glyphicon-chevron-right"></div>
+                            <span id="text-register-msg">Register an account.</span>
+                        </div>
+                        <input id="register_username" class="form-control" type="text" placeholder="Username" required>
+                        <input id="register_email" class="form-control" type="text" placeholder="E-Mail" required>
+                        <input id="register_password" class="form-control" type="password" placeholder="Password" required>
+                    </div>
+                    <div class="modal-footer">
+                        <div>
+                            <button type="submit" class="btn btn-primary btn-lg btn-block" id="register_button">Register</button>
+                        </div>
+                        <div>
+                            <button id="register_login_btn" type="button" class="btn btn-link">Log In</button>
+                            <button id="register_lost_btn" type="button" class="btn btn-link">Lost Password?</button>
+                        </div>
+                    </div>
+                </form>
+                <!-- End | Register Form -->
+
+            </div>
+            <!-- End # DIV Form -->
+
+        </div>
+    </div>
+</div>
+</div>
+<!-- END # MODAL LOGIN -->
+
+<!--middle content-->
+<div class="banner">
+    <div class="container">
+        <div class="row">
+            <div class=" col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <br>
+                <div >
+                <table id="preview" style="width:100%; padding:15px">
+                    <tr>
+                        <th><h4>Short URL</h4></th>
+                        <th><h4>Expiring date</h4></th>
+                        <th><h4>Number of clicks</h4></th>
+                    </tr>
+                </table>
+                </div>
+
+                <br>
+            </div>
+        </div>
+        <ul id="pagin" style="list-style: none;">
+
+        </ul>
+    </div>
+
+    </div>
+    <div class="container">
+        <div class="row">
+            <hr class="style-three">
+        </div>
+    </div>
+    <div class="container">
+        <div class="row fullwidth">
+
+                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4" style="padding: 20px">
+                        <img  src="crop.png" style="height: 70px;">
+                    </div>
+                    <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+                        <h3 style="text-align: left" >Easy use</h3>
+                        <p style="text-align: left">Lorrem impsum orrem impsum orrem impsum orrem impsum orrem impsum orrem</p></div>
+                </div>
+                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4" style="padding: 20px">
+                    <img class="center-block" src="share.png" style="height: 70px"></div>
+                    <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8"><h3 style="text-align: left">Simple share</h3>
+                    <p style="text-align: left">Lorrem impsum orrem impsum orrem impsum orrem impsum orrem impsum orrem</p>
+                </div></div>
+                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4" style="padding: 20px">
+                    <img class="center-block" src="line.png" style="height: 70px"></div>
+                    <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8"><h3 style="text-align: left">See your statistics</h3>
+                    <p style="text-align: left">Lorrem impsum orrem impsum orrem impsum orrem impsum orrem impsum orrem</p>
+                    </div></div>
+
+        </div>
+
+</div>
+<!-- end of middle content -->
+
+
+<br>
+<br>
+<br>
+<br>
+<!-- Middle content part 2 -->
+<div class="container content-sm" style="padding-top: 30px;">
+    <div class="row">
+        <div class="col-md-6 md-margin-bottom-50">
+            <img class="img-responsive" src="imac2.png" alt="">
+        </div>
+        <div class="col-md-6">
+            <br><br><br>
+            <div class="headline-left margin-bottom-30">
+                <h2 class="headline-brd">Lorrem impsum orrem impsum orrem impsum orrem impsum orrem impsum orrem</h2>
+                <p>Lorrem impsum orrem impsum orrem impsum orrem impsum orrem impsum orrem</p>
+            </div>
+            <ul class="list-unstyled lists-v2 margin-bottom-30">
+                <li><i class="fa fa-check"></i> Lorrem impsum orrem impsum orrem impsum orrem impsum orrem impsum orrem</li>
+                <li><i class="fa fa-check"></i> Lorrem impsum orrem impsum orrem impsum orrem impsum orrem impsum orrem</li>
+                <li><i class="fa fa-check"></i> Lorrem impsum orrem impsum orrem impsum orrem impsum orrem impsum orrem</li>
+                <li><i class="fa fa-check"></i> Lorrem impsum orrem impsum orrem impsum orrem impsum orrem impsum orrem</li>
+            </ul>
+            <button type="button" class="btn-u text-uppercase">View More</button>
+        </div><!--/end row-->
+    </div>
+</div>
+<br>
+<br>
+<br>
+<br>
+
+<div class="flat-bg-block-v1 parallaxBg1 margin-bottom-50" style="background-position: 50% 77px;">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-7 md-margin-bottom-50">
+                <div class="headline-left margin-bottom-30">
+                    <h2 class="headline-brd">Lorrem impsum orrem</h2>
+                    <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas moles</p>
+                </div><!--/end Headline Left-->
+
+                <div class="row">
+                    <div class="col-sm-5">
+                        <ul class="list-unstyled checked-list">
+                            <li><i class="fa fa-check"></i> Lorrem impsum orrem</li>
+                            <li><i class="fa fa-check"></i>Lorrem impsum orrem</li>
+                            <li><i class="fa fa-check"></i> Lorrem impsum orrem</li>
+                            <li><i class="fa fa-check"></i> Lorrem impsum orrem</li>
+                        </ul>
+                    </div>
+                    <div class="col-sm-5 col-sm-offset-1">
+                        <ul class="list-unstyled checked-list">
+                            <li><i class="fa fa-check"></i> Lorrem impsum orrem</li>
+                            <li><i class="fa fa-check"></i> Lorrem impsum orrem</li>
+                            <li><i class="fa fa-check"></i> Lorrem impsum orrem</li>
+                            <li><i class="fa fa-check"></i> Lorrem impsum orrem</li>
+                        </ul>
+                        <button type="button" class="btn-u text-uppercase">View More</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-5">
+                <img class="img-over img-responsive" src="img12.jpg" alt="">
+            </div>
+        </div>
+    </div><!--/end container-->
+</div>
+<br>
+<br>
+<br>
+<br>
+
+    <div class="container content-sm">
+        <div class="row">
+            <div class="col-md-6 md-margin-bottom-40">
+                <img class="img-responsive" src="img-15.jpg" alt="">
+            </div>
+            <div class="col-md-6">
+
+                <div class="headline-left margin-bottom-30">
+                    <h2 class="headline-brd">Lorrem impsum orrem impsum orrem impsum orrem impsum orrem impsum orrem</h2>
+                    <p>Lorrem impsum orrem impsum orrem impsum orrem impsum orrem impsum orrem</p>
+                </div>
+                <ul class="list-unstyled lists-v2 margin-bottom-30">
+                    <li><i class="fa fa-check"></i> Lorrem impsum orrem impsum orrem impsum orrem impsum orrem impsum orrem</li>
+                    <li><i class="fa fa-check"></i> Lorrem impsum orrem impsum orrem impsum orrem impsum orrem impsum orrem</li>
+                    <li><i class="fa fa-check"></i> Lorrem impsum orrem impsum orrem impsum orrem impsum orrem impsum orrem</li>
+                    <li><i class="fa fa-check"></i> Lorrem impsum orrem impsum orrem impsum orrem impsum orrem impsum orrem</li>
+                </ul>
+                <button type="button" class="btn-u text-uppercase">View More</button>
+            </div><!--/end row-->
+        </div>
+    </div>
+
+    <br>
+    <br>
+    <br>
+    <br>
+
+<br>
+<br>
+<!-- end of middle content part 2 -->
+
+<!-- Quotes -->
+<div class="flat-testimonials bg-image-v1 margin-bottom-60" style="background-position: 50% 241px;">
+    <div class="container">
+        <div class="row" style="color: black; text-align: center">
+            <h2 style="text-align: center;">What People Are Saying</h2>
+            <p>Lorem ipsum dolor sit amet, cohddhdahha
+                jadjajda
+                jdajjda]
+                nsectetur adipiscing elit. In porta ipsum vel mi gravida mattis. Ut sit amet laoreet diam. Fusce iaculis sollicitudin purus, in tristique urna. Nullam sodales blandit nisi, tristique tempor nunc hendrerit at. Sed posuere mollis orci</p>
+        </div><!--/end Headline Center-->
+
+        <div class="carousel slide" data-ride="carousel" id="quote-carousel">
+            <!-- Bottom Carousel Indicators -->
+            <ol class="carousel-indicators">
+                <li data-target="#quote-carousel" data-slide-to="0" class="active"></li>
+                <li data-target="#quote-carousel" data-slide-to="1"></li>
+                <li data-target="#quote-carousel" data-slide-to="2"></li>
+            </ol>
+
+            <!-- Carousel Slides / Quotes -->
+            <div class="carousel-inner">
+
+                <!-- Quote 1 -->
+                <div class="item active">
+                    <blockquote>
+                        <div class="row">
+                            <div class="col-sm-12 text-center">
+                                <img class="img-circle" src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQaBuOBHmgsPm6QrFuTyRmbtj3vUeesIukDCqfzA9wmBevmBbEr7Q" style="width: 150px;height:150px;">
+                                <!--<img class="img-circle" src="https://s3.amazonaws.com/uifaces/faces/twitter/kolage/128.jpg" style="width: 100px;height:100px;">-->
+                                <p>If your business is not on the Internet, then your business will be out of business.</p>
+                                <small>Bill Gates</small>
+                            </div>
+                        </div>
+                    </blockquote>
+                </div>
+                <!-- Quote 2 -->
+                <div class="item">
+                    <blockquote>
+                        <div class="row">
+                            <div class="col-sm-12 text-center">
+                                <img class="img-circle" src="http://p.fod4.com/p/media/177ae91679/Fhkv4dIeRidvXtUPhL4g_steve-jobs.jpg" style="width: 150px;height:150px;">
+
+
+                                <p>Innovation distinguishes between a leader and a follower.</p>
+                                <small>Steve Jobs</small>
+                            </div>
+                        </div>
+                    </blockquote>
+                </div>
+                <!-- Quote 3 -->
+                <div class="item">
+                    <blockquote>
+                        <div class="row">
+                            <div class="col-sm-12 text-center">
+                                <img class="img-circle" src="http://www.giantfreakinrobot.com/wp-content/uploads/2014/05/hawking.jpg" style="width: 150px;height:150px;">
+                                <p>However difficult life may seem, there is always something you can do and succeed at.</p>
+                                <small>Stephen Hawking</small>
+                            </div>
+                        </div>
+                    </blockquote>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--end of Quotes -->
+
+
+<!-- Footer -->
+<footer>
+    <div class="container-fluid fullwidth">
+        <div class="container ">
+            <div class="row fullwidth">
+                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                    <div class="list-footer" style="text-align: left;">
+
+                        <br>
+                        <p>Lorem ipsum dolor sit amet, cohddhdahha jadjajda jdajjda] nsectetur adipiscing elit. In porta ipsum vel mi gravida mattis. Ut sit amet laoreet diam. Fusce iaculis sollicitudin purus, in tristique urna. Nullam sodales blandit nisi, tristique tempor nunc hendrerit at. Sed posuere mollis orci</p>
+                        <br>
+                        <ul>
+                            <li>About Us</li>
+                            <li>Our Projects</li>
+                            <li>Contact</li>
+                        </ul>
+                        <div class="social_btn">
+                        <a href="#" class="icon-button facebook"><i class="fa fa-facebook"></i><span></span></a>
+                        <a href="#" class="icon-button twitter"><i class="fa fa-twitter"></i><span></span></a>
+                        <a href="#" class="icon-button instagram"><i class="fa fa-instagram"></i><span></span></a>
+                        <a href="#" class="icon-button google-plus"><i class="fa fa-google-plus"></i><span></span></a>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-xs-12 col-sm-4 col-md-3 col-lg-4" style="padding-top: 198px; padding-right: 50px;">
+                    <div class="digital-logo" ><br>
+                        <p style="font-weight: bolder;">Powered by</p>
+                        <img src="dc-logo.svg">
+                         <p style="font-weight: bolder; color: #45c0b4;"> DIGITAL CUBE.RS</p>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-4 col-xs-12  no-pm">
+                    <h4>Contact us</h4>
+                    <hr/>
+                    <form role="form">
+                        <div id="info"></div>
+                        <div class="form-group">
+                            <input type="text" name="name" class="form-control" placeholder="Your Name*" id="name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" name="email" class="form-control" placeholder="Your Email*" id="email" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea name="mailmsg" class="form-control" rows="7" placeholder="Your Message*" id="message" required></textarea>
+                        </div>
+
+                        <div id="sendmessage" class="btn  pull-right btn-default">Send</div>
+                    </form>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<a href="#" id="scroll" style="display: none;"><span></span></a>
+
+<script>
+
+</script>
+</body>
+</html>
